@@ -1,0 +1,17 @@
+form {
+    background-color: #ECECEC;
+    padding: 10px;
+    margin: 0 auto;
+    label, input {
+        margin: 10px 0;
+    }
+    input, button {
+        padding: 10px;
+    }
+    input {
+        width: 100%;
+    }
+    button {
+        text-transform: uppercase;
+    }
+}

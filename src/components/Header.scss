@@ -1,0 +1,22 @@
+.Header {
+    background-color: #ECEC;
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+    li {
+        display: inline-block;
+        a {
+            padding: 8px;
+            display: block;
+            transition: color 0.6s background-color 0.6s;
+            &:hover {
+                color: #FFF;
+                background-color: #EEE;
+            }
+            &:link, &:active {
+                color: inherit;
+            }
+        }
+    }
+}

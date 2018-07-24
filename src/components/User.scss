@@ -1,0 +1,29 @@
+.User {
+    background-color: #ccc;
+    margin-top: 20px;
+    transition: opacity 1s;
+    opacity: 1;
+    position: relative;
+    &.hidden {
+        opacity: 0;
+    }
+    div:first-child {
+        p {
+            padding: 10px;
+            margin: 0;
+            &:last-child {
+                padding-top: 0;
+            }
+        }
+    }
+    div:last-child {
+        position: absolute;
+        right: 10px;
+        top: 0;
+        transform: translateY(50%);
+        button {
+            padding: 10px;
+            text-transform: uppercase;
+        }
+    }
+}
