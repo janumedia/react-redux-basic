@@ -1,0 +1,14 @@
+.Status {
+    padding: 14px 6px;
+    transition:  color 0.5s background-color 1s;
+    display: none;
+    text-align: center;
+    &.pending {
+        display: block;
+    }
+    &.error {
+        color: #fff;
+        background-color: red;
+        display: block;
+    }
+}

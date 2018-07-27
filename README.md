@@ -1,6 +1,6 @@
-# React + Redux Basic Example
+# React + Redux Async Middleware Example
 
-This repo provide an example using React + Redux
+This repo provide an example using React + Redux + Async middleware
 
 # Project Setup
 

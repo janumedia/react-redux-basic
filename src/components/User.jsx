@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import {deleteUser} from '../actions/user';
+import {deleteUser} from '../actions/userActions';
 
 import './User.scss';
 
@@ -14,10 +14,17 @@ const mapDispatchToProps = dispatch => {
 
 class User extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            loaded: false
+        }
+    }
+
     componentDidMount() {
         this.timerID = setTimeout(() => {
-            this.refs.userElement.classList.remove("hidden");
-            //document.querySelector(".User.hidden").classList.remove("hidden");
+            this.setState({loaded: true})
         }, 10)
     }
 
@@ -37,7 +44,7 @@ class User extends React.Component {
     render() {
         const {name, role} = this.props;
         return (
-            <div className="User hidden" ref="userElement">
+            <div className={`User ${this.state.loaded ? '' : 'hidden'}`}>
                 <div>
                     <p>Name: {name}</p>
                     <p>Role: {role}</p>

@@ -15,7 +15,7 @@ module.exports = {
     devtool: 'source-map',
     devServer: {
         hot: true,
-        contentBase: path.resolve(__dirname, 'dist')
+        contentBase: path.resolve(__dirname, 'static')
     },
     module: {
         rules: [

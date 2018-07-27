@@ -1,8 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { addUser } from '../actions/user';
+import { addUser } from '../actions/userActions';
+import {ADD_USER} from '../constants/action-types';
 import './Form.scss';
+
+const mapStateToProps = state => state;
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -24,19 +27,29 @@ class Form extends React.Component {
         this.props.addUser({name, role})
     }
 
+    componentWillReceiveProps({action}) {
+        if(action === ADD_USER.SUCCESS) {
+            this.refs.name.value = '';
+            this.refs.role.value = '';
+        }
+    }
+
     render() {
         return (
-            <form onSubmit={this.handleFormSubmit.bind(this)}>
-                <div>
-                    <label>Name</label>
-                    <input type="text" id="name" onChange={this.handleInputChange.bind(this)} required/>
-                    <label>Role</label>
-                    <input type="text" id="role" onChange={this.handleInputChange.bind(this)} required/>
-                </div>
-                <button type="submit">Add User</button>
-            </form>
+            <div className="Form">
+                <form onSubmit={this.handleFormSubmit.bind(this)}>
+                    <div>
+                        <label>Name</label>
+                        <input type="text" id="name" ref="name" onChange={this.handleInputChange.bind(this)} required/>
+                        <label>Role</label>
+                        <input type="text" id="role" ref="role" onChange={this.handleInputChange.bind(this)} required/>
+                    </div>
+                    <button type="submit">Add User</button>
+                </form>
+                {this.props.children}
+            </div>
         );
     }
 };
 
-export default connect(null, mapDispatchToProps)(Form);
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

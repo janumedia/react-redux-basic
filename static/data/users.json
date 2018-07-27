@@ -1,0 +1,29 @@
+{
+    "users": [
+        {
+            "id": "1",
+            "name": "Tony Stark",
+            "role": "CTO"
+        },
+        {
+            "id": "2",
+            "name": "Peter Parker",
+            "role": "Web Developer"
+        },
+        {
+            "id": "3",
+            "name": "Bruce Bane",
+            "role": "Senior Engineer"
+        },
+        {
+            "id": "4",
+            "name": "Cliff Burton",
+            "role": "UIX Designer"
+        },
+        {
+            "id": "5",
+            "name": "John Doe",
+            "role": "Project Manager"
+        }
+    ]
+}

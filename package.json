@@ -1,6 +1,6 @@
 {
   "name": "react-redux-basic",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "React + Redux basic example",
   "main": "index.js",
   "scripts": {
@@ -13,11 +13,14 @@
     "redux",
     "webpack",
     "babel",
-    "es6"
+    "es6",
+    "middleware",
+    "axios"
   ],
   "author": "I Nengah Januartha",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.18.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1"
