@@ -5,7 +5,10 @@ import { addUser } from '../actions/userActions';
 import {ADD_USER} from '../constants/action-types';
 import './Form.scss';
 
-const mapStateToProps = state => state;
+const mapStateToProps = state => {
+    const {action} = state;
+    return {action}
+}
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -28,6 +31,7 @@ class Form extends React.Component {
     }
 
     componentWillReceiveProps({action}) {
+        console.log(action)
         if(action === ADD_USER.SUCCESS) {
             this.refs.name.value = '';
             this.refs.role.value = '';

@@ -1,6 +1,6 @@
-# React + Redux Async Middleware Example
+# React + Redux Async Middleware using redux-thunk Example
 
-This repo provide an example using React + Redux + Async middleware
+This repo provide an example using React + Redux + Async middleware using `redux-thunk`
 
 # Project Setup
 
