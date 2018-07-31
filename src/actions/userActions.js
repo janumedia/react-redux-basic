@@ -1,54 +1,49 @@
-import axios from 'axios';
-
 import * as types from "../constants/action-types";
 import { resolve } from 'url';
 
-export const getUsers = () => dispatch => {
+export const getUsers = () => (dispatch, getState, api) => {
     
     const GET_USERS = types.GET_USERS;
 
     dispatch({type: GET_USERS.PENDING});
 
-    //simulate loading delay
-    setTimeout(() => {
-
-        axios.get('/data/users.json')
-         .then(response => {
-            dispatch({type: GET_USERS.SUCCESS, payload: response.data.users});
-         })
-         .catch(error => {
-            dispatch({type: GET_USERS.FAILED, payload: error.toString()})
-         })
-
-    }, 2000);
-
+    api.getUsers()
+       .then(data => dispatch({type: GET_USERS.SUCCESS, payload: data.users}))
+       .catch(error => dispatch({type: GET_USERS.FAILED, payload: error}))
 }
 
-export const addUser = newUser => (dispatch, getState) => {
+export const addUser = newUser => (dispatch, getState, api) => {
     
     const ADD_USER = types.ADD_USER;
     
     dispatch({type: ADD_USER.PENDING});
 
-    //simulate loading delay and use promise
-    new Promise((resolve, reject) => {
-        setTimeout(() => { 
-            resolve();
-        }, 2000);
-    }).then( () => {
-        const {name} = newUser;
-        const exits = getState().users.find(user => user.name === name);
-        if(exits)
-        {
-            dispatch({type: ADD_USER.FAILED, payload: `${name} is already exist!`});
-        } else 
-        {
-            dispatch({type: ADD_USER.SUCCESS, payload: newUser});
-        }
-    })
+    return api.addUser(getState().users, newUser)
+       .then(data => {
+            dispatch({type: ADD_USER.SUCCESS, payload: data});
+            return ADD_USER.SUCCESS;
+       })
+       .catch(error => {
+            dispatch({type: ADD_USER.FAILED, payload: error});
+            return ADD_USER.FAILED;
+       });
+   
 }
 
-export const deleteUser = userID => ({
-    type: types.DELETE_USER,
-    payload: userID
-})
+export const deleteUser = userID => (dispatch, getState, api) => {
+
+    const DELETE_USER = types.DELETE_USER;
+
+    //dispatch({type: DELETE_USER.PENDING});
+
+    return api.deleteUser(getState().users, userID)
+              .then(users => {
+                  dispatch({type: DELETE_USER.SUCCESS, payload:users});
+                  return DELETE_USER.SUCCESS;
+              })
+              .catch(error => {
+                  dispatch({type: DELETE_USER.FAILED, payload:error});
+                  return DELETE_USER.FAILED;
+              });
+
+}

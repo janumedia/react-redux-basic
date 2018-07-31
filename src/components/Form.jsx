@@ -2,13 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { addUser } from '../actions/userActions';
-import {ADD_USER} from '../constants/action-types';
+import { ADD_USER } from '../constants/action-types';
 import './Form.scss';
-
-const mapStateToProps = state => {
-    const {action} = state;
-    return {action}
-}
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -27,17 +22,14 @@ class Form extends React.Component {
     handleFormSubmit(e) {
         e.preventDefault();
         const {name, role} = this.state;
-        this.props.addUser({name, role})
+        this.props.addUser({name, role}).then(status => {
+            if(status === ADD_USER.SUCCESS) {
+                this.refs.name.value = '';
+                this.refs.role.value = '';
+            }
+        });
     }
-
-    componentWillReceiveProps({action}) {
-        console.log(action)
-        if(action === ADD_USER.SUCCESS) {
-            this.refs.name.value = '';
-            this.refs.role.value = '';
-        }
-    }
-
+    
     render() {
         return (
             <div className="Form">
@@ -56,4 +48,5 @@ class Form extends React.Component {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Form);
+//export default connect(mapStateToProps, mapDispatchToProps)(Form);
+export default connect(null, mapDispatchToProps)(Form);

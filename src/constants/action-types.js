@@ -6,4 +6,4 @@ const asyncActionTypes = type => ({
 
 export const GET_USERS = asyncActionTypes('GET_USERS');
 export const ADD_USER = asyncActionTypes('ADD_USER');
-export const DELETE_USER = 'DELETE_USER';
+export const DELETE_USER = asyncActionTypes('DELETE_USER');
