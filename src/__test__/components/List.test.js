@@ -48,11 +48,11 @@ describe('List component', () => {
 
     it('should render items short by "id" descending', () => {
         const shortedUsers = props.users.sort((userA, userB) => userA.id > userB.id ? -1 : 1);
-        const mathes = component.children().map(node => node)
+        const matches = component.children().map(node => node)
         .filter((node, index) => {
             return node.props().id == shortedUsers[index].id;
         }).length;
 
-        expect(mathes).toEqual(props.users.length);
+        expect(matches).toEqual(props.users.length);
     })
 })
