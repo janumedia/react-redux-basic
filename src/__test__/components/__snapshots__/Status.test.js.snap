@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Status component should display correct status 1`] = `
+<p
+  className="Status "
+>
+  
+</p>
+`;
+
+exports[`Status component should display correct status 2`] = `
+<p
+  className="Status pending"
+>
+  please wait...!
+</p>
+`;
+
+exports[`Status component should display correct status 3`] = `
+<p
+  className="Status error"
+>
+  Error, get users failed!
+</p>
+`;
+
+exports[`Status component should display correct status 4`] = `
+<p
+  className="Status "
+>
+  
+</p>
+`;
+
+exports[`Status component should display correct status 5`] = `
+<p
+  className="Status pending"
+>
+  please wait...!
+</p>
+`;
+
+exports[`Status component should display correct status 6`] = `
+<p
+  className="Status error"
+>
+  Error, add user failed!
+</p>
+`;
+
+exports[`Status component should display correct status 7`] = `
+<p
+  className="Status "
+>
+  
+</p>
+`;

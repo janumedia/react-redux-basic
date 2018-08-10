@@ -20,7 +20,12 @@ const addUser = (users, newUser) => {
     return new Promise((resolve, reject) => {
         //simulate loading delay
         setTimeout(() => {
-            const {name} = newUser;
+            const {name, role} = newUser;
+            if(!name || name.length == 0 || !role || role.length == 0)
+            {
+                reject('Name and Role is required!!');
+                return;
+            }
             const exist = users.find(user => user.name === name);
             if(!exist) {
                 const id = users.length > 0 ? parseInt([...users].pop().id) + 1 : 1;

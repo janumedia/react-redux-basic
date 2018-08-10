@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User component should rendered properly 1`] = `
+<div
+  className="User hidden "
+>
+  <div>
+    <p>
+      Name: 
+      John Doe
+    </p>
+    <p>
+      Role: 
+      CEO
+    </p>
+  </div>
+  <div>
+    <button
+      onClick={[Function]}
+    >
+      Delete
+    </button>
+  </div>
+</div>
+`;
+
+exports[`User component should rendered properly 2`] = `
+<div
+  className="User  "
+>
+  <div>
+    <p>
+      Name: 
+      John Doe
+    </p>
+    <p>
+      Role: 
+      CEO
+    </p>
+  </div>
+  <div>
+    <button
+      onClick={[Function]}
+    >
+      Delete
+    </button>
+  </div>
+</div>
+`;
+
+exports[`User component should should triggered "deleteUser" and unmount properly 1`] = `
+<div
+  className="User hidden deleting"
+>
+  <div>
+    <p>
+      Name: 
+      John Doe
+    </p>
+    <p>
+      Role: 
+      CEO
+    </p>
+  </div>
+  <div>
+    <button
+      onClick={[Function]}
+    >
+      Deleting
+    </button>
+  </div>
+</div>
+`;
+
+exports[`User component should should triggered "deleteUser" and unmount properly 2`] = `""`;

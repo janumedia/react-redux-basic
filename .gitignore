@@ -1,1 +1,3 @@
 node_modules
+coverage
+src/__test__/.DS_Store

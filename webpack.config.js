@@ -26,9 +26,13 @@ module.exports = {
                     options: {
                         presets: [
                             'es2015',
+                            //{'modules': false},
                             'react'
                         ],
-                        plugins: ['transform-object-rest-spread']
+                        plugins: [
+                            'transform-object-rest-spread',
+                            'transform-class-properties'
+                        ]
                     }
                 },
                 exclude: /node_modules/

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import User from './User';
 
@@ -8,6 +9,16 @@ const List = ({users}) => {
                            .map(({name, role, id}) => <User name={name} role={role} id={id} key={id}/>);
     return (
         <ul>{listUsers}</ul>
+    )
+}
+
+List.propTypes = {
+    users: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            role: PropTypes.string.isRequired
+        })
     )
 }
 

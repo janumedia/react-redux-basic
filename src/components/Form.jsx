@@ -13,6 +13,15 @@ const mapDispatchToProps = dispatch => {
 
 class Form extends React.Component {
     
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            name: '',
+            role: ''
+        }
+    }
+    
     handleInputChange(e) {
         this.setState(
             { [e.target.id]: e.target.value }
@@ -23,11 +32,14 @@ class Form extends React.Component {
         e.preventDefault();
         const {name, role} = this.state;
         this.props.addUser({name, role}).then(status => {
+            this.setState({status: status});
             if(status === ADD_USER.SUCCESS) {
-                this.refs.name.value = '';
-                this.refs.role.value = '';
+                this.setState({
+                    name: '',
+                    role: ''
+                })
             }
-        });
+        })
     }
     
     render() {
@@ -36,9 +48,9 @@ class Form extends React.Component {
                 <form onSubmit={this.handleFormSubmit.bind(this)}>
                     <div>
                         <label>Name</label>
-                        <input type="text" id="name" ref="name" onChange={this.handleInputChange.bind(this)} required/>
+                        <input type="text" id="name" value={this.state.name} onChange={this.handleInputChange.bind(this)} />
                         <label>Role</label>
-                        <input type="text" id="role" ref="role" onChange={this.handleInputChange.bind(this)} required/>
+                        <input type="text" id="role" value={this.state.role} onChange={this.handleInputChange.bind(this)} />
                     </div>
                     <button type="submit">Add User</button>
                 </form>
@@ -48,5 +60,4 @@ class Form extends React.Component {
     }
 };
 
-//export default connect(mapStateToProps, mapDispatchToProps)(Form);
 export default connect(null, mapDispatchToProps)(Form);

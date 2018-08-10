@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import {deleteUser} from '../actions/userActions';
-import {DELETE_USER} from '../constants/action-types';
 
 import './User.scss';
 
@@ -50,7 +49,7 @@ class User extends React.Component {
                   .then(status => {
                     if(!this.mounted) return;
                     this.setState({
-                        deleting: status === DELETE_USER.SUCCESS
+                        deleting: false
                     })
                   })
     }
