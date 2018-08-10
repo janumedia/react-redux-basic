@@ -71,7 +71,7 @@ class User extends React.Component {
 }
 
 User.propTypes = {
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     role: PropTypes.string.isRequired
 }

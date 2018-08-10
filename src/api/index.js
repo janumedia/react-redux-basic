@@ -29,7 +29,7 @@ const addUser = (users, newUser) => {
             const exist = users.find(user => user.name === name);
             if(!exist) {
                 const id = users.length > 0 ? parseInt([...users].pop().id) + 1 : 1;
-                const user = {...newUser, id: id.toString()} 
+                const user = {...newUser, id} 
                 resolve([...users, user]);
             } else {
                 reject(`${name} is already exist!`);

@@ -14,7 +14,7 @@ describe('User component', () => {
         store,
         name: 'John Doe',
         role: 'CEO',
-        id: "1"
+        id: 1
     }
 
     let wrapper, button, deleteUserSpy;
