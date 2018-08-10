@@ -10,12 +10,22 @@ describe('List component', () => {
     const props = {
         users: [
             {
-                id: "1",
+                id: 20,
+                name: "Charlie Jackson",
+                role: "CTO"
+            },
+            {
+                id: 1,
                 name: "John Doe",
                 role: "CEO"
             },
             {
-                id: "2",
+                id: 3,
+                name: "Dave Esco",
+                role: "Engineer"
+            },
+            {
+                id: 2,
                 name: "Charlie Jackson",
                 role: "CTO"
             }
@@ -37,7 +47,12 @@ describe('List component', () => {
     });
 
     it('should render items short by "id" descending', () => {
-        expect(component.childAt(0).props().id).toEqual(props.users[totalUsers-1].id);
-        expect(component.childAt(totalUsers-1).props().id).toEqual(props.users[0].id);
+        const shortedUsers = props.users.sort((userA, userB) => userA.id > userB.id ? -1 : 1);
+        const mathes = component.children().map(node => node)
+        .filter((node, index) => {
+            return node.props().id == shortedUsers[index].id;
+        }).length;
+
+        expect(mathes).toEqual(props.users.length);
     })
 })

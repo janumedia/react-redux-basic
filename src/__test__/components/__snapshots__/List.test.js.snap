@@ -3,13 +3,25 @@
 exports[`List component should render properly 1`] = `
 <ul>
   <Connect(User)
-    id="2"
+    id={20}
+    key="20"
+    name="Charlie Jackson"
+    role="CTO"
+  />
+  <Connect(User)
+    id={3}
+    key="3"
+    name="Dave Esco"
+    role="Engineer"
+  />
+  <Connect(User)
+    id={2}
     key="2"
     name="Charlie Jackson"
     role="CTO"
   />
   <Connect(User)
-    id="1"
+    id={1}
     key="1"
     name="John Doe"
     role="CEO"
