@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import Quote from '../../components/Quote';
 
 describe('Quote component', () => {
-    test('should render text correctly', () => {
+    it('should render text correctly', () => {
         const expectedText = 'Hello World';
         const expectedUpdatedText = 'Hey Joe';
         const component = shallow(<Quote>{expectedText}</Quote>);

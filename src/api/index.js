@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { resolve } from 'path';
 
 const getUsers = () => {
     return new Promise((resolve, reject) => {

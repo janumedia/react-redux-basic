@@ -1,11 +1,11 @@
 import * as types from '../constants/action-types';
 
-const initialState = {
+export const initialState = {
     users: [],
     pending: false
 };
 
-const user = (state = initialState, action) => {
+export default (state = initialState, action) => {
     state = {
         ...state,
         pending: action.type.indexOf('_PENDING') > 0,
@@ -28,5 +28,3 @@ const user = (state = initialState, action) => {
     }
     return state;
 };
-
-export default user;

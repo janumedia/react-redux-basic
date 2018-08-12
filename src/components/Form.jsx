@@ -20,12 +20,19 @@ class Form extends React.Component {
             name: '',
             role: ''
         }
+
+        //define methods here to make them testable
+        this.handleInputNameChange = this.handleInputNameChange.bind(this);
+        this.handleInputRoleChange = this.handleInputRoleChange.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
     
-    handleInputChange(e) {
-        this.setState(
-            { [e.target.id]: e.target.value }
-        )
+    handleInputNameChange(e) {
+        this.setState({ name: e.target.value })
+    }
+
+    handleInputRoleChange(e) {
+        this.setState({ role: e.target.value })
     }
 
     handleFormSubmit(e) {
@@ -45,12 +52,12 @@ class Form extends React.Component {
     render() {
         return (
             <div className="Form">
-                <form onSubmit={this.handleFormSubmit.bind(this)}>
+                <form onSubmit={this.handleFormSubmit}>
                     <div>
                         <label>Name</label>
-                        <input type="text" id="name" value={this.state.name} onChange={this.handleInputChange.bind(this)} />
+                        <input type="text" id="name" value={this.state.name} onChange={this.handleInputNameChange} />
                         <label>Role</label>
-                        <input type="text" id="role" value={this.state.role} onChange={this.handleInputChange.bind(this)} />
+                        <input type="text" id="role" value={this.state.role} onChange={this.handleInputRoleChange} />
                     </div>
                     <button type="submit">Add User</button>
                 </form>

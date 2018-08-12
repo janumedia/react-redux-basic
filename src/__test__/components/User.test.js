@@ -56,7 +56,7 @@ describe('User component', () => {
         expect(deleteUserSpy).toHaveBeenCalled();
     });
 
-    it('should triggered "deleteUser" once on continous button clicked', () => {
+    it('should triggered "deleteUser" only once upon continous button clicked', () => {
         button.simulate('click');
         button.simulate('click');
         button.simulate('click');

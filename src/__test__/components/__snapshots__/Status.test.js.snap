@@ -55,3 +55,19 @@ exports[`Status component should display correct status 7`] = `
   
 </p>
 `;
+
+exports[`Status component should display correct status 8`] = `
+<p
+  className="Status error"
+>
+  Error, delete user failed!
+</p>
+`;
+
+exports[`Status component should display correct status 9`] = `
+<p
+  className="Status "
+>
+  
+</p>
+`;

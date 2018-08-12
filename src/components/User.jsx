@@ -23,6 +23,7 @@ class User extends React.Component {
         }
 
         this.mounted = false;
+        this.deleteUser = this.deleteUser.bind(this);
     }
 
     componentDidMount() {
@@ -63,7 +64,7 @@ class User extends React.Component {
                     <p>Role: {role}</p>
                 </div>
                 <div>
-                    <button onClick={this.deleteUser.bind(this)}>{this.state.deleting ? 'Deleting' : 'Delete'}</button>
+                    <button onClick={this.deleteUser}>{this.state.deleting ? 'Deleting' : 'Delete'}</button>
                 </div>
             </div>
         );
