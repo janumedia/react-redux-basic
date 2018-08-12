@@ -8,4 +8,4 @@ This project setup is based on [react-basic-with-minimal-setup repo](https://git
 
 # Unit Test
 
-This repo using `jest` and `enzyme` for unit testing
+This repo using `jest`, `enzyme` and `redux-mock-store` for unit testing
