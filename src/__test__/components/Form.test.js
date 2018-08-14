@@ -28,7 +28,6 @@ describe('Form component', () => {
 
     afterEach(() => {
         addUserSpy.mockRestore();
-        //jest.resetAllMocks();
         jest.clearAllTimers();
     });
 

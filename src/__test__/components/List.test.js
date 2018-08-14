@@ -26,8 +26,8 @@ describe('List component', () => {
             },
             {
                 id: 2,
-                name: "Charlie Jackson",
-                role: "CTO"
+                name: "Marx Johnson",
+                role: "Markerting Manager"
             }
         ]
     };
@@ -40,11 +40,13 @@ describe('List component', () => {
 
     it('should render properly', () => {
         expect(component.type()).toEqual('ul');
-        expect(component.children()).toHaveLength(totalUsers);
-        expect(component.childAt(0).type()).toEqual(User);
-        expect(component.childAt(totalUsers-1).type()).toEqual(User);
         expect(toJson(component)).toMatchSnapshot();
     });
+
+    it('should render list of "User" as children', () => {
+        const userList = component.children().map(node => node).filter(node => node.type() === User);
+        expect(userList).toHaveLength(totalUsers);
+    })
 
     it('should render items short by "id" descending', () => {
         const shortedUsers = props.users.sort((userA, userB) => userA.id > userB.id ? -1 : 1);
@@ -52,7 +54,6 @@ describe('List component', () => {
         .filter((node, index) => {
             return node.props().id == shortedUsers[index].id;
         }).length;
-
         expect(matches).toEqual(props.users.length);
     })
 })

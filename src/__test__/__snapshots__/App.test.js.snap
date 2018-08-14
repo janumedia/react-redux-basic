@@ -1,0 +1,1132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component should add user item onSubmit form 1`] = `
+Array [
+  <div
+    className="Header"
+  >
+    <ul>
+      <li>
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="about"
+        >
+          About
+        </a>
+      </li>
+      <li>
+        <a
+          href="works"
+        >
+          Works
+        </a>
+      </li>
+    </ul>
+  </div>,
+  <section>
+    <h1>
+      User List
+    </h1>
+    <div
+      className="Form"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <label>
+            Name
+          </label>
+          <input
+            id="name"
+            onChange={[Function]}
+            type="text"
+            value="Tony Stark"
+          />
+          <label>
+            Role
+          </label>
+          <input
+            id="role"
+            onChange={[Function]}
+            type="text"
+            value="CEO"
+          />
+        </div>
+        <button
+          type="submit"
+        >
+          Add User
+        </button>
+      </form>
+      <p
+        className="Status "
+      >
+        
+      </p>
+    </div>
+    <ul>
+      <div
+        className="User  "
+      >
+        <div>
+          <p>
+            Name: 
+            Dave Mustaine
+          </p>
+          <p>
+            Role: 
+            Engineer
+          </p>
+        </div>
+        <div>
+          <button
+            onClick={[Function]}
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </ul>
+  </section>,
+]
+`;
+
+exports[`App component should add user item onSubmit form 2`] = `
+Array [
+  <div
+    className="Header"
+  >
+    <ul>
+      <li>
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="about"
+        >
+          About
+        </a>
+      </li>
+      <li>
+        <a
+          href="works"
+        >
+          Works
+        </a>
+      </li>
+    </ul>
+  </div>,
+  <section>
+    <h1>
+      User List
+    </h1>
+    <div
+      className="Form"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <label>
+            Name
+          </label>
+          <input
+            id="name"
+            onChange={[Function]}
+            type="text"
+            value="Tony Stark"
+          />
+          <label>
+            Role
+          </label>
+          <input
+            id="role"
+            onChange={[Function]}
+            type="text"
+            value="CEO"
+          />
+        </div>
+        <button
+          type="submit"
+        >
+          Add User
+        </button>
+      </form>
+      <p
+        className="Status pending"
+      >
+        please wait...!
+      </p>
+    </div>
+    <ul>
+      <div
+        className="User  "
+      >
+        <div>
+          <p>
+            Name: 
+            Dave Mustaine
+          </p>
+          <p>
+            Role: 
+            Engineer
+          </p>
+        </div>
+        <div>
+          <button
+            onClick={[Function]}
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </ul>
+  </section>,
+]
+`;
+
+exports[`App component should add user item onSubmit form 3`] = `
+Array [
+  <div
+    className="Header"
+  >
+    <ul>
+      <li>
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="about"
+        >
+          About
+        </a>
+      </li>
+      <li>
+        <a
+          href="works"
+        >
+          Works
+        </a>
+      </li>
+    </ul>
+  </div>,
+  <section>
+    <h1>
+      User List
+    </h1>
+    <div
+      className="Form"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <label>
+            Name
+          </label>
+          <input
+            id="name"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+          <label>
+            Role
+          </label>
+          <input
+            id="role"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+        <button
+          type="submit"
+        >
+          Add User
+        </button>
+      </form>
+      <p
+        className="Status "
+      >
+        
+      </p>
+    </div>
+    <ul>
+      <div
+        className="User hidden "
+      >
+        <div>
+          <p>
+            Name: 
+            Tony Stark
+          </p>
+          <p>
+            Role: 
+            CEO
+          </p>
+        </div>
+        <div>
+          <button
+            onClick={[Function]}
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+      <div
+        className="User  "
+      >
+        <div>
+          <p>
+            Name: 
+            Dave Mustaine
+          </p>
+          <p>
+            Role: 
+            Engineer
+          </p>
+        </div>
+        <div>
+          <button
+            onClick={[Function]}
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </ul>
+  </section>,
+]
+`;
+
+exports[`App component should remove user item delete button clicked 1`] = `
+Array [
+  <div
+    className="Header"
+  >
+    <ul>
+      <li>
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="about"
+        >
+          About
+        </a>
+      </li>
+      <li>
+        <a
+          href="works"
+        >
+          Works
+        </a>
+      </li>
+    </ul>
+  </div>,
+  <section>
+    <h1>
+      User List
+    </h1>
+    <div
+      className="Form"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <label>
+            Name
+          </label>
+          <input
+            id="name"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+          <label>
+            Role
+          </label>
+          <input
+            id="role"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+        <button
+          type="submit"
+        >
+          Add User
+        </button>
+      </form>
+      <p
+        className="Status "
+      >
+        
+      </p>
+    </div>
+    <ul>
+      <div
+        className="User  "
+      >
+        <div>
+          <p>
+            Name: 
+            Dave Mustaine
+          </p>
+          <p>
+            Role: 
+            Engineer
+          </p>
+        </div>
+        <div>
+          <button
+            onClick={[Function]}
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </ul>
+  </section>,
+]
+`;
+
+exports[`App component should remove user item delete button clicked 2`] = `
+Array [
+  <div
+    className="Header"
+  >
+    <ul>
+      <li>
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="about"
+        >
+          About
+        </a>
+      </li>
+      <li>
+        <a
+          href="works"
+        >
+          Works
+        </a>
+      </li>
+    </ul>
+  </div>,
+  <section>
+    <h1>
+      User List
+    </h1>
+    <div
+      className="Form"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <label>
+            Name
+          </label>
+          <input
+            id="name"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+          <label>
+            Role
+          </label>
+          <input
+            id="role"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+        <button
+          type="submit"
+        >
+          Add User
+        </button>
+      </form>
+      <p
+        className="Status "
+      >
+        
+      </p>
+    </div>
+    <ul>
+      <div
+        className="User  deleting"
+      >
+        <div>
+          <p>
+            Name: 
+            Dave Mustaine
+          </p>
+          <p>
+            Role: 
+            Engineer
+          </p>
+        </div>
+        <div>
+          <button
+            onClick={[Function]}
+          >
+            Deleting
+          </button>
+        </div>
+      </div>
+    </ul>
+  </section>,
+]
+`;
+
+exports[`App component should remove user item delete button clicked 3`] = `
+Array [
+  <div
+    className="Header"
+  >
+    <ul>
+      <li>
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="about"
+        >
+          About
+        </a>
+      </li>
+      <li>
+        <a
+          href="works"
+        >
+          Works
+        </a>
+      </li>
+    </ul>
+  </div>,
+  <section>
+    <h1>
+      User List
+    </h1>
+    <div
+      className="Form"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <label>
+            Name
+          </label>
+          <input
+            id="name"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+          <label>
+            Role
+          </label>
+          <input
+            id="role"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+        <button
+          type="submit"
+        >
+          Add User
+        </button>
+      </form>
+      <p
+        className="Status "
+      >
+        
+      </p>
+    </div>
+    <ul />
+  </section>,
+]
+`;
+
+exports[`App component should render emty user list initially 1`] = `
+Array [
+  <div
+    className="Header"
+  >
+    <ul>
+      <li>
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="about"
+        >
+          About
+        </a>
+      </li>
+      <li>
+        <a
+          href="works"
+        >
+          Works
+        </a>
+      </li>
+    </ul>
+  </div>,
+  <section>
+    <h1>
+      User List
+    </h1>
+    <div
+      className="Form"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <label>
+            Name
+          </label>
+          <input
+            id="name"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+          <label>
+            Role
+          </label>
+          <input
+            id="role"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+        <button
+          type="submit"
+        >
+          Add User
+        </button>
+      </form>
+      <p
+        className="Status pending"
+      >
+        please wait...!
+      </p>
+    </div>
+    <ul />
+  </section>,
+]
+`;
+
+exports[`App component should render list of user items 1`] = `
+Array [
+  <div
+    className="Header"
+  >
+    <ul>
+      <li>
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="about"
+        >
+          About
+        </a>
+      </li>
+      <li>
+        <a
+          href="works"
+        >
+          Works
+        </a>
+      </li>
+    </ul>
+  </div>,
+  <section>
+    <h1>
+      User List
+    </h1>
+    <div
+      className="Form"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <label>
+            Name
+          </label>
+          <input
+            id="name"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+          <label>
+            Role
+          </label>
+          <input
+            id="role"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+        <button
+          type="submit"
+        >
+          Add User
+        </button>
+      </form>
+      <p
+        className="Status pending"
+      >
+        please wait...!
+      </p>
+    </div>
+    <ul />
+  </section>,
+]
+`;
+
+exports[`App component should render list of user items 2`] = `
+Array [
+  <div
+    className="Header"
+  >
+    <ul>
+      <li>
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="about"
+        >
+          About
+        </a>
+      </li>
+      <li>
+        <a
+          href="works"
+        >
+          Works
+        </a>
+      </li>
+    </ul>
+  </div>,
+  <section>
+    <h1>
+      User List
+    </h1>
+    <div
+      className="Form"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <label>
+            Name
+          </label>
+          <input
+            id="name"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+          <label>
+            Role
+          </label>
+          <input
+            id="role"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+        <button
+          type="submit"
+        >
+          Add User
+        </button>
+      </form>
+      <p
+        className="Status "
+      >
+        
+      </p>
+    </div>
+    <ul>
+      <div
+        className="User hidden "
+      >
+        <div>
+          <p>
+            Name: 
+            Dave Mustaine
+          </p>
+          <p>
+            Role: 
+            Engineer
+          </p>
+        </div>
+        <div>
+          <button
+            onClick={[Function]}
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </ul>
+  </section>,
+]
+`;
+
+exports[`App component should show error status when submit existing name 1`] = `
+Array [
+  <div
+    className="Header"
+  >
+    <ul>
+      <li>
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="about"
+        >
+          About
+        </a>
+      </li>
+      <li>
+        <a
+          href="works"
+        >
+          Works
+        </a>
+      </li>
+    </ul>
+  </div>,
+  <section>
+    <h1>
+      User List
+    </h1>
+    <div
+      className="Form"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <label>
+            Name
+          </label>
+          <input
+            id="name"
+            onChange={[Function]}
+            type="text"
+            value="Dave Mustaine"
+          />
+          <label>
+            Role
+          </label>
+          <input
+            id="role"
+            onChange={[Function]}
+            type="text"
+            value="Engineer"
+          />
+        </div>
+        <button
+          type="submit"
+        >
+          Add User
+        </button>
+      </form>
+      <p
+        className="Status "
+      >
+        
+      </p>
+    </div>
+    <ul>
+      <div
+        className="User  "
+      >
+        <div>
+          <p>
+            Name: 
+            Dave Mustaine
+          </p>
+          <p>
+            Role: 
+            Engineer
+          </p>
+        </div>
+        <div>
+          <button
+            onClick={[Function]}
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </ul>
+  </section>,
+]
+`;
+
+exports[`App component should show error status when submit existing name 2`] = `
+Array [
+  <div
+    className="Header"
+  >
+    <ul>
+      <li>
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="about"
+        >
+          About
+        </a>
+      </li>
+      <li>
+        <a
+          href="works"
+        >
+          Works
+        </a>
+      </li>
+    </ul>
+  </div>,
+  <section>
+    <h1>
+      User List
+    </h1>
+    <div
+      className="Form"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <label>
+            Name
+          </label>
+          <input
+            id="name"
+            onChange={[Function]}
+            type="text"
+            value="Dave Mustaine"
+          />
+          <label>
+            Role
+          </label>
+          <input
+            id="role"
+            onChange={[Function]}
+            type="text"
+            value="Engineer"
+          />
+        </div>
+        <button
+          type="submit"
+        >
+          Add User
+        </button>
+      </form>
+      <p
+        className="Status pending"
+      >
+        please wait...!
+      </p>
+    </div>
+    <ul>
+      <div
+        className="User  "
+      >
+        <div>
+          <p>
+            Name: 
+            Dave Mustaine
+          </p>
+          <p>
+            Role: 
+            Engineer
+          </p>
+        </div>
+        <div>
+          <button
+            onClick={[Function]}
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </ul>
+  </section>,
+]
+`;
+
+exports[`App component should show error status when submit existing name 3`] = `
+Array [
+  <div
+    className="Header"
+  >
+    <ul>
+      <li>
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="about"
+        >
+          About
+        </a>
+      </li>
+      <li>
+        <a
+          href="works"
+        >
+          Works
+        </a>
+      </li>
+    </ul>
+  </div>,
+  <section>
+    <h1>
+      User List
+    </h1>
+    <div
+      className="Form"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <label>
+            Name
+          </label>
+          <input
+            id="name"
+            onChange={[Function]}
+            type="text"
+            value="Dave Mustaine"
+          />
+          <label>
+            Role
+          </label>
+          <input
+            id="role"
+            onChange={[Function]}
+            type="text"
+            value="Engineer"
+          />
+        </div>
+        <button
+          type="submit"
+        >
+          Add User
+        </button>
+      </form>
+      <p
+        className="Status error"
+      >
+        Dave Mustaine is already exist!
+      </p>
+    </div>
+    <ul>
+      <div
+        className="User  "
+      >
+        <div>
+          <p>
+            Name: 
+            Dave Mustaine
+          </p>
+          <p>
+            Role: 
+            Engineer
+          </p>
+        </div>
+        <div>
+          <button
+            onClick={[Function]}
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </ul>
+  </section>,
+]
+`;

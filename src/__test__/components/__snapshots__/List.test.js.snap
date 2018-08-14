@@ -17,8 +17,8 @@ exports[`List component should render properly 1`] = `
   <Connect(User)
     id={2}
     key="2"
-    name="Charlie Jackson"
-    role="CTO"
+    name="Marx Johnson"
+    role="Markerting Manager"
   />
   <Connect(User)
     id={1}

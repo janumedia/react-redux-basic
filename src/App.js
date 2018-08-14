@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { addUser, getUsers} from './actions/userActions';
+import { getUsers} from './actions/userActions';
 
 import Header from './components/Header';
 import Quote from './components/Quote';
@@ -13,7 +13,6 @@ const mapStateToProps = state => state;
 
 const mapDispatchToProps = dispatch => {
     return {
-        addUser: user => dispatch(addUser(user)),
         getUsers: () => dispatch(getUsers())
     };
 };

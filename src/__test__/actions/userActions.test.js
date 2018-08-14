@@ -9,7 +9,9 @@ import * as types from '../../constants/action-types';
 
 //mock axios module
 //https://jestjs.io/docs/en/mock-functions.html#mocking-modules
+//solution one: use jest.mock()
 jest.mock('axios');
+//soluton two: create mock file inside folder __mocks__
 
 describe('userActions', () => {
     

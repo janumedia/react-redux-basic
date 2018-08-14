@@ -29,7 +29,6 @@ describe('User component', () => {
 
     afterEach(() => {
         deleteUserSpy.mockRestore();
-        //jest.resetAllMocks();
         jest.clearAllTimers();
     });
     

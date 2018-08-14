@@ -7,7 +7,7 @@ export const getUsers = () => (dispatch, getState, api) => {
     dispatch({type: GET_USERS.PENDING});
     
     return api.getUsers()
-       .then(data => dispatch({type: GET_USERS.SUCCESS, payload: data.users}))
+       .then(data => dispatch({type: GET_USERS.SUCCESS, payload: data.users ? data.users : []}))
        .catch(error => dispatch({type: GET_USERS.FAILED, payload: error}))
 }
 
@@ -32,7 +32,7 @@ export const addUser = newUser => (dispatch, getState, api) => {
 export const deleteUser = userID => (dispatch, getState, api) => {
 
     const DELETE_USER = types.DELETE_USER;
-
+    
     //dispatch({type: DELETE_USER.PENDING});
 
     return api.deleteUser(getState().users, userID)

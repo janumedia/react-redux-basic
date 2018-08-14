@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --verbose",
+    "test:watch": "jest --verbose --watch",
     "test:update": "jest --verbose --updateSnapshot",
-    "test:log": "jest --updateSnapshot --coverage --verbose",
+    "test:coverage": "jest --coverage --verbose",
     "dev": "webpack-dev-server --config webpack.config.js"
   },
   "keywords": [
