@@ -26,37 +26,53 @@ describe('App component', () => {
         role: 'CEO'
     }
 
-    const testAndSimulateForm = async (component, name, role) => {
-        let tree = component.toJSON();
-    
-        const sectionItems = tree.filter(node => node.type === 'section')[0].children;
-        const formDiv = sectionItems.find(node => node.props.className === 'Form').children;
-        const form = formDiv.find(node => node.type === 'form');
+    const findNode = (component, type) => {
+        const tree = component.toJSON();
+        const section = tree.filter(node => node.type === 'section')[0];
+        const Form = section.children.find(node => node.props.className && node.props.className.indexOf('Form') > -1);
+        const List = section.children.find(node => node.type === 'ul');
+        const form = Form.children.find(node => node.type == 'form');
+        const Status = Form.children.find(node => node.props.className && node.props.className.indexOf('Status') > -1);
         const inputList = form.children[0].children.filter(node => node.type === 'input');
-        const nameInput = inputList[0];
-        const roleInput = inputList[1];
+        switch(type) {
+            case 'section':
+                return section;
+            case 'form':
+                return form;
+            case 'name': case 'role':
+                return inputList.find(node => node.props.id == type);
+            case 'Status':
+                return Status;
+            case 'List':
+                return List;
+        }
+    }
+
+    const resolveGetUsers = async() => {
+        const mockGetUsers = getUsersSpy.mockResolvedValueOnce();
+        jest.runOnlyPendingTimers();
+        await mockGetUsers();
+    }
+
+    const testAndSimulateForm = async (component, name, role) => {
+        const inputName = findNode(component, 'name');
+        const inputRole = findNode(component, 'role');
+        const form = findNode(component, 'form');
         
-        //simulate input onChange
-        nameInput.props.onChange({target:{value:name}});
-        roleInput.props.onChange({target:{value:role}});
-    
-        //initial
-        tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-    
+        //simulate input changed
+        inputName.props.onChange({target:{value:name}});
+        inputRole.props.onChange({target:{value:role}});
+
+        //simulate form submit
         form.props.onSubmit({preventDefault:()=>{}});
-    
-        //update onSubmiting
-        tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-    
+        
+        //simulate resolved actions
         jest.runOnlyPendingTimers();
         const mockAddUser = addUserSpy.mockResolvedValueOnce();
         await mockAddUser();
-    
-        //update after onSubmited
-        tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
+
+        //get updated DOM
+        expect(component.toJSON()).toMatchSnapshot();
     }
 
     let component, getUsersSpy, addUserSpy, deleteUserSpy;
@@ -88,75 +104,71 @@ describe('App component', () => {
         jest.clearAllTimers();
     })
 
-    it('should render emty user list initially', () => {
+    it('should render intial load', async () => {
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
-    });
-
-    it('should render list of user items', async () => {
         
-        //initial
-        let tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-
-        const mockGetUsers = getUsersSpy.mockResolvedValueOnce();
-        jest.runOnlyPendingTimers();
-        await mockGetUsers();
+        await resolveGetUsers();
         
         //update
         tree = component.toJSON();
         expect(tree).toMatchSnapshot();
-
     });
+
+    it('should update Status text during submiting new user', async () => {
+        
+        await resolveGetUsers();
+
+        const form = findNode(component, 'form');
+        const status = findNode(component, 'Status');
+
+        //simulate form submit
+        form.props.onSubmit({preventDefault:()=>{}});
+        //status state should updated
+        expect(findNode(component, 'Status')).not.toEqual(status);
+    })
 
     it('should add user item onSubmit form', async () => {
         
-        const mockGetUsers = getUsersSpy.mockResolvedValueOnce();
-        jest.runOnlyPendingTimers();
-        await mockGetUsers();
+        await resolveGetUsers();
         
         testAndSimulateForm(component, user2.name, user2.role);
         
     });
 
-    it('should show error status when submit existing name', async () => {
+    it('should render error Status text when submit invalid input', async () => {
         
-        const mockGetUsers = getUsersSpy.mockResolvedValueOnce();
-        jest.runOnlyPendingTimers();
-        await mockGetUsers();
+        await resolveGetUsers();
         
-        testAndSimulateForm(component, user.name, user.role);
-        
+        testAndSimulateForm(component, '', '')//user.name, user.role);
     });
 
-    it('should remove user item delete button clicked', async () => {
+    it('should render different button label and remove user item from list when delete button clicked', async () => {
         
-        jest.runOnlyPendingTimers();
-        const mockGetUsers = getUsersSpy.mockResolvedValueOnce();
-        await mockGetUsers();
+        await resolveGetUsers();
         
-        //initial
-        let tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
+        const findUserDeleteBtn = (component) => {
+            const listUser = findNode(component, 'List');
+            const userComponent = listUser.children.find(node => node.props.className.indexOf('User') > -1);
+            return userComponent.children[1].children.find(node => node.type === 'button');
+        }
         
-        const sectionItems = tree.filter(node => node.type === 'section')[0].children;
-        const listUser = sectionItems.filter(node => node.type === 'ul')[0].children;
-        const itemUser = listUser[0].children;
-        const deleteBtn = itemUser[1].children.find(node => node.type === 'button');
+        const listUser = findNode(component, 'List');
+        const deleteBtn = findUserDeleteBtn(component);
+        
         //simulate onClick
         deleteBtn.props.onClick();
+        
+        //get updated DOM
+        expect(findUserDeleteBtn(component)).not.toEqual(deleteBtn);
 
-        //update on deleting
-        tree = component.toJSON();
-        expect(tree).toMatchSnapshot();   
-
+        //simulate resolved actions
         jest.runOnlyPendingTimers();
         const mockDeleteUser = deleteUserSpy.mockResolvedValueOnce();
         await mockDeleteUser()
 
-        //update after deleted
-        tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
+        //get updated DOM
+        expect(findNode(component, 'List')).not.toEqual(listUser);
     });
 
 })
