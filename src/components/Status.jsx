@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import './Status.scss';
 
-const mapStateToProps = state => state;
+const mapStateToProps = ({pending, error}) => ({pending, error});
 
 const Status = (props) => {
     const className = `Status ${props.error ? 'error' : props.pending ? 'pending' : ''}`;

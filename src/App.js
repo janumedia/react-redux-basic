@@ -9,7 +9,7 @@ import List from './components/List';
 import Form from './components/Form';
 import Status from './components/Status';
 
-const mapStateToProps = state => state;
+const mapStateToProps = ({users}) => ({users});
 
 const mapDispatchToProps = dispatch => {
     return {
