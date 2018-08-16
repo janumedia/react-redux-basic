@@ -16,6 +16,11 @@ describe('Form component', () => {
         role: "Engineer"
     }
 
+    const simulatePromiseResolved = () => new Promise(resolve => {
+        jest.runOnlyPendingTimers();
+        setImmediate(resolve);
+    });
+
     let wrapper, form, inputName, inputRole, addUserSpy;
 
     beforeEach(() => {
@@ -59,10 +64,8 @@ describe('Form component', () => {
         wrapper.instance().handleInputRoleChange({target: {value:props.role}});
         
         form.simulate('submit', {target:form, preventDefault:() => {}});
-        jest.runOnlyPendingTimers();
-
-        const mockResolveAddUser = addUserSpy.mockResolvedValueOnce();
-        await mockResolveAddUser();
+        
+        await simulatePromiseResolved();
         
         if(wrapper.state('status') === ADD_USER.SUCCESS)
         {
@@ -80,10 +83,8 @@ describe('Form component', () => {
         wrapper.instance().handleInputRoleChange({target: {value:props.role}});
 
         form.simulate('submit', {target:form, preventDefault:() => {}});
-        jest.runOnlyPendingTimers();
-
-        const mockResolveAddUser = addUserSpy.mockResolvedValueOnce();
-        await mockResolveAddUser();
+        
+        await simulatePromiseResolved();
 
         expect(wrapper.state('status')).toEqual(ADD_USER.FAILED);
     });
@@ -91,11 +92,7 @@ describe('Form component', () => {
     it('should return "ADD_USER.FAILED" if NOT fill both "name" and "role"', async() => {
         form.simulate('submit', {preventDefault:() => {}});
         
-        jest.runOnlyPendingTimers();
-        expect(addUserSpy).toHaveBeenCalledTimes(1);
-        
-        const mockResolveAddUser = addUserSpy.mockResolvedValueOnce();
-        await mockResolveAddUser();
+        await simulatePromiseResolved();
 
         expect(wrapper.state('status')).toEqual(ADD_USER.FAILED);
     });

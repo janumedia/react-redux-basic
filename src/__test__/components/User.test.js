@@ -17,6 +17,11 @@ describe('User component', () => {
         id: 1
     }
 
+    const simulatePromiseResolved = () => new Promise(resolve => {
+        jest.runOnlyPendingTimers();
+        setImmediate(resolve);
+    });
+
     let wrapper, button, deleteUserSpy;
 
     beforeEach(() => {
@@ -65,11 +70,9 @@ describe('User component', () => {
     it('should update state on button clicked and "deleteuser" resolved', async() => {
         button.simulate('click');
         expect(wrapper.state('deleting')).toBe(true);
-        //process pending timer
-        jest.runOnlyPendingTimers();
-        const mockResolveDeleteUser = deleteUserSpy.mockResolvedValueOnce();
-        //simulate async / promise resolve
-        await mockResolveDeleteUser();
+        
+        await simulatePromiseResolved();
+
         expect(wrapper.state('deleting')).toBe(false);
     });
 
@@ -77,32 +80,33 @@ describe('User component', () => {
         button.simulate('click');
         expect(deleteUserSpy).toHaveBeenCalledTimes(1);
         expect(wrapper.state('deleting')).toBe(true);
-        //process pending timer
-        jest.runOnlyPendingTimers();
-        //simulate async / promise resolve
-        const mockResolveDeleteUser = deleteUserSpy.mockResolvedValueOnce();
-        await mockResolveDeleteUser();
-        //note: mockResolveDeleteUser() is count to hasBeencalled
-        expect(deleteUserSpy).toHaveBeenCalledTimes(2);
+        
+        button.simulate('click');
+        //until resolved action will not able to call
+        expect(deleteUserSpy).toHaveBeenCalledTimes(1);
+
+        await simulatePromiseResolved();
+
         expect(wrapper.state('deleting')).toBe(false);
         button.simulate('click');
-        expect(deleteUserSpy).toHaveBeenCalledTimes(3);
+        expect(deleteUserSpy).toHaveBeenCalledTimes(2);
         expect(wrapper.state('deleting')).toBe(true);
     });
 
     it('should should triggered "deleteUser" and unmount properly', async () => {
         button.simulate('click');
+        
         expect(toJson(wrapper)).toMatchSnapshot();
+        
         //simulate unmount
         wrapper.unmount();
         //update component
         wrapper.update();
+        
         expect(deleteUserSpy).toHaveBeenCalledTimes(1);
-        //process pending timer
-        jest.runOnlyPendingTimers();
-        //simulate async / promise resolve
-        const mockResolveDeleteUser = deleteUserSpy.mockResolvedValueOnce();
-        await mockResolveDeleteUser();
+        
+        await simulatePromiseResolved();
+
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 

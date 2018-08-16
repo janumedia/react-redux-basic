@@ -48,12 +48,8 @@ describe('App component', () => {
         }
     }
 
-    const resolveGetUsers = async() => {
-        const mockGetUsers = getUsersSpy.mockResolvedValueOnce();
-        jest.runOnlyPendingTimers();
-        await mockGetUsers();
-    }
-
+    const resolveGetUsers = async() => await simulatePromiseResolved();
+    
     const testAndSimulateForm = async (component, name, role) => {
         const inputName = findNode(component, 'name');
         const inputRole = findNode(component, 'role');
@@ -65,24 +61,20 @@ describe('App component', () => {
 
         //simulate form submit
         form.props.onSubmit({preventDefault:()=>{}});
-        
-        //simulate resolved actions
-        jest.runOnlyPendingTimers();
-        const mockAddUser = addUserSpy.mockResolvedValueOnce();
-        await mockAddUser();
-
-        //get updated DOM
-        expect(component.toJSON()).toMatchSnapshot();
     }
 
-    let component, getUsersSpy, addUserSpy, deleteUserSpy;
+    const simulatePromiseResolved = () => new Promise(resolve => {
+        jest.runOnlyPendingTimers();
+        setImmediate(resolve);
+    });
+
+    let component, getUsersSpy;
 
     beforeEach(() => {
         
         getUsersSpy = jest.spyOn(userActions, 'getUsers');
-        addUserSpy = jest.spyOn(userActions, 'addUser');
-        deleteUserSpy = jest.spyOn(userActions, 'deleteUser');
-       
+
+        //mock axios on resolved value
         axios.get.mockResolvedValueOnce({
             data:
             {
@@ -97,24 +89,21 @@ describe('App component', () => {
         )
     });
 
-    afterAll(() => {
+    afterEach(() => {
         getUsersSpy.mockRestore();
-        addUserSpy.mockRestore();
-        deleteUserSpy.mockRestore();
         jest.clearAllTimers();
     })
 
-    it('should render intial load', async () => {
-        let tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-        
-        await resolveGetUsers();
-        
-        //update
-        tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
+    it('should call "getUsers" and rendered loading status on initial load', async () => {
+        expect(getUsersSpy).toHaveBeenCalledTimes(1);
+        expect(component.toJSON()).toMatchSnapshot();
     });
 
+    it('should render user list properly on users loaded', async () => {
+        await resolveGetUsers();
+        expect(component.toJSON()).toMatchSnapshot();
+    });
+    
     it('should update Status text during submiting new user', async () => {
         
         await resolveGetUsers();
@@ -127,22 +116,33 @@ describe('App component', () => {
         //status state should updated
         expect(findNode(component, 'Status')).not.toEqual(status);
     })
-
+    
     it('should add user item onSubmit form', async () => {
         
         await resolveGetUsers();
         
         testAndSimulateForm(component, user2.name, user2.role);
+
+        await simulatePromiseResolved();
+        
+        //capture updated DOM
+        expect(component.toJSON()).toMatchSnapshot();
         
     });
-
+    
     it('should render error Status text when submit invalid input', async () => {
         
         await resolveGetUsers();
         
-        testAndSimulateForm(component, '', '')//user.name, user.role);
-    });
+        testAndSimulateForm(component, '', '');
+        //testAndSimulateForm(component, user.name, user.role);
 
+        await simulatePromiseResolved();
+        
+        //capture updated DOM
+        expect(component.toJSON()).toMatchSnapshot();
+    });
+    
     it('should render different button label and remove user item from list when delete button clicked', async () => {
         
         await resolveGetUsers();
@@ -159,16 +159,13 @@ describe('App component', () => {
         //simulate onClick
         deleteBtn.props.onClick();
         
-        //get updated DOM
+        //test updated DOM
         expect(findUserDeleteBtn(component)).not.toEqual(deleteBtn);
 
-        //simulate resolved actions
-        jest.runOnlyPendingTimers();
-        const mockDeleteUser = deleteUserSpy.mockResolvedValueOnce();
-        await mockDeleteUser()
+        await simulatePromiseResolved();
 
-        //get updated DOM
+        //capture updated DOM
         expect(findNode(component, 'List')).not.toEqual(listUser);
     });
-
+    
 })
